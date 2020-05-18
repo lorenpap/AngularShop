@@ -1,0 +1,28 @@
+@image-background-color: #FFFFFF;
+
+.image {
+  background-color: @image-background-color !important;
+  position: relative;
+}
+
+#out-of-stock{
+  position: absolute;
+  bottom: 45%;
+  left: 27%;
+  background-color: @image-background-color;
+}
+
+.add-button{
+  margin-left: 53%;
+}
+
+.remove-button{
+  margin-left: 38%;
+}
+
+:host:hover {
+  > .image {
+    opacity: 0.6;
+  }
+}
+

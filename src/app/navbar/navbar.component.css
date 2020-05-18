@@ -1,0 +1,63 @@
+.hover-color {
+  border-color: #FFFFFF;
+}
+#cart-button {
+  border-color: #232f3e;
+  border-width: 1px;
+  border-style: solid;
+}
+#cart-button:hover {
+  border-color: #FFFFFF;
+}
+#navbar {
+  background-color: #232f3e;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#navbar #logo {
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-right: 0;
+}
+#navbar #search {
+  padding: 0;
+  margin-top: 1.5%;
+  padding-left: 3%;
+}
+#navbar #tools-row {
+  padding-bottom: 0;
+  padding-top: 3%;
+  color: #FFFFFF;
+  padding-left: 15%;
+}
+#navbar #tools-row #tools {
+  background-color: #232f3e;
+  border-style: none;
+}
+#navbar #tools-row #tools #account-button {
+  color: #FFFFFF;
+  border-style: solid;
+  border-color: #232f3e;
+  margin-right: 10%;
+  border-width: 1px;
+  padding: 0;
+  margin-top: 5%;
+}
+#navbar #tools-row #tools #account-button .account-text {
+  margin-top: 15%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #232f3e;
+}
+#navbar #tools-row #tools #account-button #dropdown-icon {
+  margin: 0;
+  margin-top: 12%;
+}
+#navbar #tools-row #tools #account-button:hover {
+  border-color: #FFFFFF;
+}
+#navbar #tools-row #tools app-cart-button {
+  margin-top: 5%;
+}
+/*# sourceMappingURL=navbar.component.css.map */

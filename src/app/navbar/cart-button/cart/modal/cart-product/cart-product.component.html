@@ -1,0 +1,29 @@
+<div class="three wide column">
+  <div class="ui image">
+    <img src="{{product.product.image}}" alt="{{product.product.name}}">
+  </div>
+</div>
+<div class="five wide column">
+  <div class="text-content">
+    <div class="ui header">{{product.product.name}}</div>
+    <p>{{product.product.description}}</p>
+    <p>{{product.product.price}}
+      <i class="small shekel sign icon"></i>
+    </p>
+    <select id="selected-value" class="ui fluid dropdown" *ngIf="product.product.limit" [(ngModel)]="value" (change)="getValue(value)" >
+      <option *ngFor="let num of limit;" [value]="num">
+        {{num}}
+      </option>
+    </select>
+
+    <div class="ui transparent input" *ngIf="!product.product.limit">
+      <input placeholder={{inputValue}} type="number" min="1" [(ngModel)]="inputValue" (change)="getInputAmount()">
+    </div>
+  </div>
+</div>
+<div class="eight wide column">
+  <i class="close-icon red close link icon" (click)="removeProduct()"></i>
+</div>
+<div class="sixteen wide column">
+  <div class="ui divider"></div>
+</div>
