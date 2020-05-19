@@ -31,7 +31,6 @@ export class CartProductComponent implements OnInit {
   }
 
   unlimitedProductAmount() {
-    console.log(this.product.amount);
     this.changeAmount.emit(this.product.amount);
   }
 }

@@ -11,8 +11,14 @@ import {ProductListComponent} from '../product-list.component';
 export class ProductComponent {
   @Input() product: Product;
   @Input() isInCart: boolean;
-  @Output() deleteProduct = new EventEmitter<Product>();
-  @Output() addProduct = new EventEmitter<Product>();
+  @Output() deleteProduct: EventEmitter<Product>;
+  @Output() addProduct: EventEmitter<Product>;
+
+  constructor() {
+    this.deleteProduct = new EventEmitter<Product>();
+    this.addProduct = new EventEmitter<Product>();
+  }
+
 
   removeFromCart(product: Product) {
     this.deleteProduct.emit(product);
