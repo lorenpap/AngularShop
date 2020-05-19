@@ -1,11 +1,11 @@
 <mat-dialog-content>
   <div class="ui header">Your Shopping Cart</div>
   <div class="ui divider"></div>
-  <app-cart-product id="modal-content" class="ui grid" *ngFor=" let product of cartProducts|async;"
-                    [product]="product" (chosenProduct)="removeProduct($event)" (changeLimitedAmount)="updateAmount(product.product,$event)"
-                    (changeUnlimitedAmount)="updateAmount(product.product,$event)" [inputValue]="product.amount">
+  <app-cart-product id="modal-content" class="ui grid" *ngFor=" let cartProduct of cartProducts$|async;"
+                    [product]="cartProduct" (productToRemove)="removeProduct($event)" (changeLimitedAmount)="updateAmount(cartProduct.product,$event)"
+                    (changeUnlimitedAmount)="updateAmount(cartProduct.product,$event)">
   </app-cart-product>
-  <p id="total-price">Total price: {{this.totalPrice.getValue()}}
+  <p id="total-price">Total price: {{this.totalPrice$|async}}
     <i class="small shekel sign icon"></i></p>
 
   <mat-dialog-actions align="end">

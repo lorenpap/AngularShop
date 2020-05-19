@@ -1,6 +1,6 @@
 <a class="image">
   <img src="{{product.image}}" alt="WS">
-  <button id="out-of-stock" class="ui big negative basic button" *ngIf="IsOutOfStock">
+  <button id="out-of-stock" class="ui big negative basic button" *ngIf="product.limit===0">
     out of stock
   </button>
 </a>
@@ -16,13 +16,13 @@
   </div>
   <div> Rating: 3/5
   </div>
-  <div class="add-button ui primary button" (click)="addToCart(product)" *ngIf="!isInCart && !IsOutOfStock">
+  <div class="add-button ui primary button" (click)="addToCart(product)" *ngIf="!isInCart && product.limit!==0">
     Add to cart
   </div>
-  <div class="add-button ui disabled primary button" (click)="addToCart(product)" *ngIf="IsOutOfStock">
+  <div class="add-button ui disabled primary button" (click)="addToCart(product)" *ngIf="product.limit===0">
     Add to cart
   </div>
-  <div class="remove-button ui secondary button" (click)="removeFromCart(product)" *ngIf="isInCart && !IsOutOfStock">
+  <div class="remove-button ui secondary button" (click)="removeFromCart(product)" *ngIf="isInCart && product.limit!==0">
     Remove from cart
   </div>
 </div>

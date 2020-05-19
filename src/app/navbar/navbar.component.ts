@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {ModalComponent} from './cart-button/cart/modal/modal.component';
+import {CartComponent} from './cart-button/cart/cart.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +13,7 @@ export class NavbarComponent {
   }
 
   openDialog() {
-    this.dialog.open(ModalComponent, {
+    this.dialog.open(CartComponent, {
       width: '80%',
     });
   }

@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Product} from '../interfaces/product-interface';
-import {CartService} from '../navbar/cart-button/cart/cart.service';
+import {Product} from '../../interfaces/product-interface';
+import {CartService} from '../../navbar/cart-button/cart/services/cart.service';
 import {map} from 'rxjs/operators';
 
 @Injectable()
+
 export class ProductService {
   private products$ = new BehaviorSubject([]);
 

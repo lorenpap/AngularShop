@@ -13,7 +13,6 @@ export class ProductComponent {
   @Input() isInCart: boolean;
   @Output() deleteProduct = new EventEmitter<Product>();
   @Output() addProduct = new EventEmitter<Product>();
-  @Input() IsOutOfStock: boolean;
 
   removeFromCart(product: Product) {
     this.deleteProduct.emit(product);

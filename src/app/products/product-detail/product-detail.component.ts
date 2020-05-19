@@ -4,7 +4,7 @@ import {Product} from '../../interfaces/product-interface';
 import {ProductComponent} from '../product-list/product/product.component';
 import {ActivatedRoute, convertToParamMap, ParamMap} from '@angular/router';
 import {ProductListComponent} from '../product-list/product-list.component';
-import {ProductService} from '../product.service';
+import {ProductService} from '../services/product.service';
 import {map, switchMap} from 'rxjs/operators';
 
 
