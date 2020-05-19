@@ -10,13 +10,13 @@ import {CartService} from '../../navbar/cart-button/cart/cart.service';
   styleUrls: ['./product-list.component.less']
 })
 export class ProductListComponent implements OnInit {
-  products: Observable<Product[]>;
+  products$: Observable<Product[]>;
 
   constructor(private productService: ProductService, private cartService: CartService) {
   }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.products$ = this.productService.getProducts();
   }
 
   IsInCart(product: Product): boolean {

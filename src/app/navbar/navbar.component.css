@@ -44,16 +44,6 @@
   padding: 0;
   margin-top: 5%;
 }
-#navbar #tools-row #tools #account-button .account-text {
-  margin-top: 15%;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #232f3e;
-}
-#navbar #tools-row #tools #account-button #dropdown-icon {
-  margin: 0;
-  margin-top: 12%;
-}
 #navbar #tools-row #tools #account-button:hover {
   border-color: #FFFFFF;
 }

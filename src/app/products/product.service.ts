@@ -3,33 +3,36 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Product} from '../interfaces/product-interface';
 import {CartService} from '../navbar/cart-button/cart/cart.service';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
-  private products = new BehaviorSubject([]);
+  private products$ = new BehaviorSubject([]);
 
   constructor(private http: HttpClient, private cartService: CartService) {
-    this.http.get<Product[]>('../assets/products-json/products.json').subscribe(a => this.products.next(a));
+    this.http.get<Product[]>('../assets/products-json/products.json').subscribe(product => this.products$.next(product));
   }
 
-  getProducts(): BehaviorSubject<Product[]> {
-    return this.products;
+  getProducts(): BehaviorSubject<Product[]>{
+    return this.products$;
   }
 
-  getProduct(productName: string): Product {
-    const products = this.products.getValue();
-    return products.find(product => product.name === productName);
+  getProduct(productName: string): Observable<Product> {
+    return this.products$.asObservable().pipe(
+      map(products =>
+        products.find(product =>
+          product.name === productName)
+      )
+    );
   }
 
   changeLimit() {
-    const currentProducts = this.products.getValue();
+    const currentProducts = this.products$.getValue();
     currentProducts.forEach((product) => {
       if (product.limit !== undefined && this.cartService.getProductAmount(product) !== undefined) {
         product.limit -= this.cartService.getProductAmount(product);
-        console.log(product.limit);
       }
     });
-    console.log(this.products.getValue());
   }
 }
 

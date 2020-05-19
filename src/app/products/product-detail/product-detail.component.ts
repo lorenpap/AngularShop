@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Product} from '../../interfaces/product-interface';
 import {ProductComponent} from '../product-list/product/product.component';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, convertToParamMap, ParamMap} from '@angular/router';
 import {ProductListComponent} from '../product-list/product-list.component';
 import {ProductService} from '../product.service';
 import {map, switchMap} from 'rxjs/operators';
@@ -14,13 +14,12 @@ import {map, switchMap} from 'rxjs/operators';
   styleUrls: ['./product-detail.component.less']
 })
 export class ProductDetailComponent implements OnInit {
-  product: Observable<Product>;
+  product$: Observable<Product>;
 
   constructor(private route: ActivatedRoute, private productService: ProductService) {
   }
 
   ngOnInit(){
-    this.product = this.route.paramMap.pipe(map((param) => this.productService.getProduct(param.get('product-name'))));
-
-  }
+    this.product$ = this.route.paramMap.pipe(switchMap((param) => this.productService.getProduct(param.get('product-name'))));
+     }
 }

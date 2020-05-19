@@ -20,7 +20,7 @@ export class ModalComponent implements OnInit {
   constructor(private cartService: CartService, private productService: ProductService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.products = this.productService.getProducts();
     this.cart = this.cartService.getCart();
     this.createCart();

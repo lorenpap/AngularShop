@@ -8,18 +8,12 @@ import {ProductListComponent} from '../product-list.component';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.less']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent {
   @Input() product: Product;
   @Input() isInCart: boolean;
   @Output() deleteProduct = new EventEmitter<Product>();
   @Output() addProduct = new EventEmitter<Product>();
   @Input() IsOutOfStock: boolean;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
   removeFromCart(product: Product) {
     this.deleteProduct.emit(product);

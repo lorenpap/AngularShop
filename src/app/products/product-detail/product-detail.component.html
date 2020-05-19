@@ -1,12 +1,11 @@
-<div *ngIf="product|async as product">
+<div *ngIf="product$|async as product">
   <div id="product" class="ui two column grid">
     <div class="column">
-      <img class="ui medium image" src="{{product.image}}" alt="img">
+      <img class="ui medium image" [src]="product.image" alt="img">
     </div>
     <div class="column">
       <div class="product-info ui large header">{{product.name}}</div>
-      <div class="product-info">{{product.price}}
-        <i class="small shekel sign icon"></i>
+      <div class="product-info">{{product.price| currency:'ILS':true }}
       </div>
       <div class="product-info">{{product.description}}</div>
     </div>

@@ -15,13 +15,15 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { AccountMenuComponent } from './navbar/account-menu/account-menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CartButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    AccountMenuComponent
   ],
   imports: [
     BrowserModule,
