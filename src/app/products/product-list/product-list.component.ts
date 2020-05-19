@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from 'src/app/interfaces/product-interface';
 import {ProductService} from 'src/app/products/services/product.service';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {CartService} from '../../navbar/cart-button/cart/services/cart.service';
+import {CartService} from '../../cart/services/cart.service';
 
 @Component({
   selector: 'app-product-list',

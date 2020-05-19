@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {CartComponent} from './cart-button/cart/cart.component';
+import {CartComponent} from '../cart/cart.component';
 
 @Component({
   selector: 'app-navbar',

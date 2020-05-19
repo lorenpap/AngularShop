@@ -9,16 +9,19 @@
     <p>{{cartItem.product.description}}</p>
     <p>{{cartItem.product.price| currency:'ILS':true }}
     </p>
-    <select id="selected-value" class="ui fluid dropdown" *ngIf="cartItem.product.limit" [(ngModel)]="cartItem.amount"
+    <select id="selected-value" class="ui fluid dropdown" *ngIf="cartItem.product.limit; else unlimited"
+            [(ngModel)]="cartItem.amount"
             (change)="changeLimit(cartItem.amount)">
       <option *ngFor="let num of limitOptions;" [value]="num">
         {{num}}
       </option>
     </select>
 
-    <div class="ui transparent input" *ngIf="!cartItem.product.limit">
-      <input type="number" min="1" [(ngModel)]="cartItem.amount" (change)="unlimitedProductAmount()">
-    </div>
+    <ng-template #unlimited>
+      <div class="ui transparent input">
+        <input type="number" min="1" [(ngModel)]="cartItem.amount" (change)="unlimitedProductAmount()">
+      </div>
+    </ng-template>
   </div>
 </div>
 <div class="eight wide column">

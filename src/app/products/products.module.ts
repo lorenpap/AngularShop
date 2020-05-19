@@ -6,7 +6,7 @@ import {ProductDetailComponent} from './product-detail/product-detail.component'
 import {HttpClientModule} from '@angular/common/http';
 import {ProductComponent} from './product-list/product/product.component';
 import {AppRoutingModule} from '../app-routing.module';
-import {CartModule} from '../navbar/cart-button/cart/cart.module';
+import {CartModule} from '../cart/cart.module';
 
 
 

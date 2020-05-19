@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from './services/cart.service';
-import {ProductService} from '../../../products/services/product.service';
+import {ProductService} from '../products/services/product.service';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Product} from '../../../interfaces/product-interface';
-import {CartItem} from '../../../interfaces/cart-interface';
+import {Product} from '../interfaces/product-interface';
+import {CartItem} from '../interfaces/cart-interface';
 
 @Component({
   selector: 'app-cart',
