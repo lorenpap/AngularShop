@@ -16,8 +16,7 @@ export class ModalComponent implements OnInit {
   cart: BehaviorSubject<Record<string, number>>;
   cartProducts: Observable<Cart[]>;
   totalPrice: BehaviorSubject<number>;
-  limitedProductAmount: number;
-  unlimitedProductAmount: number;
+
   constructor(private cartService: CartService, private productService: ProductService) {
   }
 
@@ -31,8 +30,12 @@ export class ModalComponent implements OnInit {
   createCart() {
     console.log(this.products.getValue());
     const products = this.products.getValue();
-    this.cartProducts = this.cart.pipe(map((cart: Record<string, number>) => Object.keys(cart).map(name => ({product: products.find(elem =>
-        elem.name === name), amount: cart[name]}))));
+    this.cartProducts = this.cart.pipe(
+      map((cart: Record<string, number>) =>
+        Object.keys(cart).map(name => ({
+          product: products.find(p =>
+            p.name === name), amount: cart[name]
+        }))));
   }
 
   checkout() {
@@ -44,15 +47,10 @@ export class ModalComponent implements OnInit {
     this.cartService.remove(product);
   }
 
-  updateLimitedProductAmount(product: Product, amount: number) {
-    this.limitedProductAmount = amount;
-    this.cartService.update(product, this.limitedProductAmount);
+  updateAmount(product: Product, amount: number) {
+    this.cartService.update(product, amount);
   }
 
-  updateUnlimitedProductAmount(product: Product, amount: number){
-    this.unlimitedProductAmount = amount;
-    this.cartService.update(product, this.unlimitedProductAmount);
-  }
 
 }
 

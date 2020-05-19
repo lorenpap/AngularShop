@@ -6,15 +6,10 @@ import {CartService} from '../navbar/cart-button/cart/cart.service';
 
 @Injectable()
 export class ProductService {
-  private observeProducts: Observable<Product[]>;
   private products = new BehaviorSubject([]);
 
-  constructor(
-    private http: HttpClient,
-    private cartService: CartService
-  ) {
-    this.observeProducts = this.http.get<Product[]>('../assets/products-json/products.json');
-    this.observeProducts.subscribe(a => this.products.next(a));
+  constructor(private http: HttpClient, private cartService: CartService) {
+    this.http.get<Product[]>('../assets/products-json/products.json').subscribe(a => this.products.next(a));
   }
 
   getProducts(): BehaviorSubject<Product[]> {
@@ -28,13 +23,12 @@ export class ProductService {
 
   changeLimit() {
     const currentProducts = this.products.getValue();
-    const newProducts = currentProducts.map((product) => {
+    currentProducts.forEach((product) => {
       if (product.limit !== undefined && this.cartService.getProductAmount(product) !== undefined) {
         product.limit -= this.cartService.getProductAmount(product);
+        console.log(product.limit);
       }
-      return product;
     });
-    this.products.next(newProducts);
     console.log(this.products.getValue());
   }
 }

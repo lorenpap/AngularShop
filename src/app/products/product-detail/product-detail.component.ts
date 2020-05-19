@@ -16,8 +16,7 @@ import {map, switchMap} from 'rxjs/operators';
 export class ProductDetailComponent implements OnInit {
   product: Observable<Product>;
 
-  constructor(private route: ActivatedRoute,
-              private productService: ProductService) {
+  constructor(private route: ActivatedRoute, private productService: ProductService) {
   }
 
   ngOnInit(){

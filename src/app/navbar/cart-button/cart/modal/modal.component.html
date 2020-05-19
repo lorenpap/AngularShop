@@ -2,8 +2,8 @@
   <div class="ui header">Your Shopping Cart</div>
   <div class="ui divider"></div>
   <app-cart-product id="modal-content" class="ui grid" *ngFor=" let product of cartProducts|async;"
-                    [product]="product" (chosenProduct)="removeProduct($event)" (changeLimitedAmount)="updateLimitedProductAmount(product.product,$event)"
-                    (changeUnlimitedAmount)="updateUnlimitedProductAmount(product.product,$event)" [inputValue]="unlimitedProductAmount">
+                    [product]="product" (chosenProduct)="removeProduct($event)" (changeLimitedAmount)="updateAmount(product.product,$event)"
+                    (changeUnlimitedAmount)="updateAmount(product.product,$event)" [inputValue]="product.amount">
   </app-cart-product>
   <p id="total-price">Total price: {{this.totalPrice.getValue()}}
     <i class="small shekel sign icon"></i></p>

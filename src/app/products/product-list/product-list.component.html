@@ -2,7 +2,7 @@
   <ng-container *ngIf="products | async as p">
     <app-product class="ui link card" *ngFor="let product of p;"
                  [product]="product" (deleteProduct)="removeFromCart($event)" (addProduct)="addToCart($event)"
-                 [IsInCart]="IsInCart(product)"
+                 [isInCart]="IsInCart(product)"
                  [IsOutOfStock]="IsOutOfStock(product)">
     </app-product>
   </ng-container>

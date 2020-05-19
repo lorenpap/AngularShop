@@ -10,7 +10,7 @@ import {CartService} from '../../navbar/cart-button/cart/cart.service';
   styleUrls: ['./product-list.component.less']
 })
 export class ProductListComponent implements OnInit {
-  products: BehaviorSubject<Product[]>;
+  products: Observable<Product[]>;
 
   constructor(private productService: ProductService, private cartService: CartService) {
   }
@@ -19,8 +19,8 @@ export class ProductListComponent implements OnInit {
     this.products = this.productService.getProducts();
   }
 
-  IsInCart(product: Product) {
-    return this.cartService.getProductAmount(product) > 0;
+  IsInCart(product: Product): boolean {
+    return !!this.cartService.getProductAmount(product);
   }
 
   removeFromCart(currentProduct: Product) {
@@ -32,8 +32,7 @@ export class ProductListComponent implements OnInit {
   }
 
   IsOutOfStock(product: Product) {
-    return product.limit !== undefined && product.limit === 0;
-
+    return product.limit === 0;
   }
 }
 

@@ -10,7 +10,7 @@ import {ProductListComponent} from '../product-list.component';
 })
 export class ProductComponent implements OnInit {
   @Input() product: Product;
-  @Input() IsInCart: boolean;
+  @Input() isInCart: boolean;
   @Output() deleteProduct = new EventEmitter<Product>();
   @Output() addProduct = new EventEmitter<Product>();
   @Input() IsOutOfStock: boolean;

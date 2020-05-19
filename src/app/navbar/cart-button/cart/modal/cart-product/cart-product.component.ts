@@ -20,9 +20,7 @@ export class CartProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.product.product.limit >= this.product.amount) {
-      this.limit = [...Array(this.product.product.limit).keys()].map(x => x + 1);
-    }
+    this.limit = [...Array(this.product.product.limit).keys()].map(x => x + 1);
     this.value = this.product.amount;
   }
 
