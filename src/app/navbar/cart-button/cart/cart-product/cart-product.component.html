@@ -9,15 +9,15 @@
     <p>{{product.product.description}}</p>
     <p>{{product.product.price| currency:'ILS':true }}
     </p>
-    <select id="selected-value" class="ui fluid dropdown" *ngIf="product.product.limit" [(ngModel)]="value"
-            (change)="getValue(value)">
-      <option *ngFor="let num of limit;" [value]="num">
+    <select id="selected-value" class="ui fluid dropdown" *ngIf="product.product.limit" [(ngModel)]="product.amount"
+            (change)="changeLimit(product.amount)">
+      <option *ngFor="let num of limitOptions;" [value]="num">
         {{num}}
       </option>
     </select>
 
     <div class="ui transparent input" *ngIf="!product.product.limit">
-      <input placeholder={{product.amount}} type="number" min="1" [(ngModel)]="product.amount" (change)="getInputAmount()">
+      <input placeholder={{product.amount}} type="number" min="1" [(ngModel)]="product.amount" (change)="unlimitedProductAmount()">
     </div>
   </div>
 </div>
