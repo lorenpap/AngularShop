@@ -1,23 +1,23 @@
 <div class="three wide column">
   <div class="ui image">
-    <img [src]="product.product.image" alt="{{product.product.name}}">
+    <img [src]="cartItem.product.image" alt="{{cartItem.product.name}}">
   </div>
 </div>
 <div class="five wide column">
   <div class="text-content">
-    <div class="ui header">{{product.product.name}}</div>
-    <p>{{product.product.description}}</p>
-    <p>{{product.product.price| currency:'ILS':true }}
+    <div class="ui header">{{cartItem.product.name}}</div>
+    <p>{{cartItem.product.description}}</p>
+    <p>{{cartItem.product.price| currency:'ILS':true }}
     </p>
-    <select id="selected-value" class="ui fluid dropdown" *ngIf="product.product.limit" [(ngModel)]="product.amount"
-            (change)="changeLimit(product.amount)">
+    <select id="selected-value" class="ui fluid dropdown" *ngIf="cartItem.product.limit" [(ngModel)]="cartItem.amount"
+            (change)="changeLimit(cartItem.amount)">
       <option *ngFor="let num of limitOptions;" [value]="num">
         {{num}}
       </option>
     </select>
 
-    <div class="ui transparent input" *ngIf="!product.product.limit">
-      <input placeholder={{product.amount}} type="number" min="1" [(ngModel)]="product.amount" (change)="unlimitedProductAmount()">
+    <div class="ui transparent input" *ngIf="!cartItem.product.limit">
+      <input type="number" min="1" [(ngModel)]="cartItem.amount" (change)="unlimitedProductAmount()">
     </div>
   </div>
 </div>

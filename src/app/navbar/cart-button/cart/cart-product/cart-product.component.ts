@@ -8,7 +8,7 @@ import {Product} from '../../../../interfaces/product-interface';
   styleUrls: ['./cart-product.component.less']
 })
 export class CartProductComponent implements OnInit {
-  @Input() product: CartItem;
+  @Input() cartItem: CartItem;
   @Output() changeAmount: EventEmitter<number>;
   @Output() productToRemove: EventEmitter<Product>;
   limitOptions: number[];
@@ -19,11 +19,11 @@ export class CartProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.limitOptions = [...Array(this.product.product.limit).keys()].map(x => x + 1);
+    this.limitOptions = [...Array(this.cartItem.product.limit).keys()].map(x => x + 1);
   }
 
   removeProduct() {
-    this.productToRemove.emit(this.product.product);
+    this.productToRemove.emit(this.cartItem.product);
   }
 
   changeLimit(limit: number) {
@@ -31,6 +31,6 @@ export class CartProductComponent implements OnInit {
   }
 
   unlimitedProductAmount() {
-    this.changeAmount.emit(this.product.amount);
+    this.changeAmount.emit(this.cartItem.amount);
   }
 }
