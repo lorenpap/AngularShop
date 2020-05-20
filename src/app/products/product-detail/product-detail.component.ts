@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Product} from '../../interfaces/product-interface';
+import {Product} from '../../models/product.model';
 import {ProductComponent} from '../product-list/product/product.component';
 import {ActivatedRoute, convertToParamMap, ParamMap} from '@angular/router';
 import {ProductListComponent} from '../product-list/product-list.component';

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from 'src/app/interfaces/product-interface';
+import {Product} from 'src/app/models/product.model';
 import {ProductService} from 'src/app/products/services/product.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {CartService} from '../../cart/services/cart.service';
@@ -24,11 +24,11 @@ export class ProductListComponent implements OnInit {
   }
 
   removeFromCart(currentProduct: Product) {
-    this.cartService.remove(currentProduct);
+    this.cartService.remove(currentProduct.name);
   }
 
   addToCart(currentProduct: Product) {
-    this.cartService.add(currentProduct);
+    this.cartService.add(currentProduct.name);
   }
 }
 

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Product} from '../../interfaces/product-interface';
+import {Product} from '../../models/product.model';
 import {CartService} from '../../cart/services/cart.service';
 import {map} from 'rxjs/operators';
 

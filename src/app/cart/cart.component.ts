@@ -3,8 +3,8 @@ import {CartService} from './services/cart.service';
 import {ProductService} from '../products/services/product.service';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Product} from '../interfaces/product-interface';
-import {CartItem} from '../interfaces/cart-interface';
+import {Product} from '../models/product.model';
+import {CartItem} from '../models/cartItem.model';
 
 @Component({
   selector: 'app-cart',
@@ -15,16 +15,14 @@ export class CartComponent implements OnInit {
   products$: Observable<Product[]>;
   cart$: Observable<Record<string, number>>;
   cartProducts$: Observable<CartItem[]>;
-  totalPrice$: Observable<number>;
 
-  constructor(private cartService: CartService, private productService: ProductService) {
+  constructor(public cartService: CartService, private productService: ProductService) {
   }
 
   ngOnInit() {
     this.products$ = this.productService.getProducts();
     this.cart$ = this.cartService.getCart();
     this.createCart();
-    this.totalPrice$ = this.cartService.getCartTotalPrice();
   }
 
   createCart() {
@@ -38,11 +36,11 @@ export class CartComponent implements OnInit {
   }
 
   removeProduct(product: Product) {
-    this.cartService.remove(product);
+    this.cartService.remove(product.name);
   }
 
   updateAmount(product: Product, amount: number) {
-    this.cartService.updateAmount(product, amount);
+    this.cartService.updateAmount(product.name, amount);
   }
 
 

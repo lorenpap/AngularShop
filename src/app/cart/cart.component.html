@@ -5,7 +5,7 @@
                     [cartItem]="cartProduct" (productToRemove)="removeProduct($event)"
                     (changeAmount)="updateAmount(cartProduct.product,$event)">
   </app-cart-product>
-  <p id="total-price">Total price: {{this.totalPrice$|async}}
+  <p id="total-price">Total price: {{this.cartService.getCartTotalPrice(this.cartProducts$)|async}}
     <i class="small shekel sign icon"></i></p>
 
   <mat-dialog-actions align="end">

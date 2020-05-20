@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Product} from '../../../interfaces/product-interface';
+import {Product} from '../../../models/product.model';
 import {ProductListComponent} from '../product-list.component';
 
 @Component({
