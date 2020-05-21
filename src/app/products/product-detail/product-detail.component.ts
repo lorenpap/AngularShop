@@ -20,6 +20,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.product$ = this.route.paramMap.pipe(switchMap((param) => this.productService.getProduct(param.get('product-name'))));
+    this.product$ = this.route.paramMap.pipe(switchMap((param) => this.productService.getProduct$(param.get('product-name'))));
      }
 }

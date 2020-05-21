@@ -10,7 +10,6 @@ import {Cart} from '../../models/cart.model';
 export class CartService {
   cart$: BehaviorSubject<Cart>;
 
-
   constructor() {
     this.cart$ = new BehaviorSubject({});
   }
@@ -38,23 +37,15 @@ export class CartService {
     this.cart$.next({});
   }
 
-  printCart() {
-    const cart = this.cart$.getValue();
-    console.log(cart);
-    console.log(this.getCartAmount());
-  }
-
   getCartAmount(): Observable<number> {
-    return this.cart$.pipe(map((cart) => {
-      return Object.keys(cart).length;
-    }));
+    return this.cart$.pipe(map((cart) => Object.keys(cart).length));
   }
 
   getCart(): Observable<Cart> {
-    return this.cart$;
+    return this.cart$.asObservable();
   }
 
-  getCartTotalPrice(cartProducts$: Observable<CartItem[]>): Observable<number> {
+  getCartTotalPrice$(cartProducts$: Observable<CartItem[]>): Observable<number> {
     return cartProducts$.pipe(map(cartItems =>
       cartItems.reduce((acc, currentProduct) => acc + currentProduct.amount * currentProduct.product.price, 0)));
   }

@@ -12,22 +12,21 @@ import {CartItem} from '../models/cartItem.model';
   styleUrls: ['./cart.component.less']
 })
 export class CartComponent implements OnInit {
-  products$: Observable<Product[]>;
-  cart$: Observable<Record<string, number>>;
   cartProducts$: Observable<CartItem[]>;
 
   constructor(public cartService: CartService, private productService: ProductService) {
   }
 
   ngOnInit() {
-    this.products$ = this.productService.getProducts();
-    this.cart$ = this.cartService.getCart();
     this.createCart();
   }
 
   createCart() {
-    this.cartProducts$ = combineLatest(this.products$, this.cart$).pipe(map(([products, cart]: [Product[], Record<string, number>]) =>
-      Object.keys(cart).map(name => ({product: products.find(elem => elem.name === name), amount: cart[name]}))));
+    this.cartProducts$ = combineLatest(
+      this.productService.getProducts$(),
+      this.cartService.getCart()).pipe(
+      map(([products, cart]: [Product[], Record<string, number>]) =>
+        Object.keys(cart).map(name => ({product: products.find(elem => elem.name === name), amount: cart[name]}))));
   }
 
   checkout() {

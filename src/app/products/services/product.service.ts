@@ -11,15 +11,15 @@ export class ProductService {
   private products$ = new BehaviorSubject([]);
 
   constructor(private http: HttpClient, private cartService: CartService) {
-    this.http.get<Product[]>('../assets/products-json/products.json').subscribe(product => this.products$.next(product));
+    this.http.get<Product[]>('../assets/products-json/products.json').subscribe(products => this.products$.next(products));
   }
 
-  getProducts(): BehaviorSubject<Product[]>{
+  getProducts$(): BehaviorSubject<Product[]>{
     return this.products$;
   }
 
-  getProduct(productName: string): Observable<Product> {
-    return this.products$.asObservable().pipe(
+  getProduct$(productName: string): Observable<Product> {
+    return this.products$.pipe(
       map(products =>
         products.find(product =>
           product.name === productName)

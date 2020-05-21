@@ -19,6 +19,7 @@
   <div class="add-button ui primary button" [ngClass]="{'disabled': product.limit===0}"   (click)="addToCart(product)" *ngIf="!isInCart">
     Add to cart
   </div>
+
   <div class="remove-button ui secondary button" (click)="removeFromCart(product)" *ngIf="isInCart && product.limit!==0">
     Remove from cart
   </div>

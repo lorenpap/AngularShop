@@ -28,11 +28,10 @@ export class CartProductComponent implements OnInit {
   }
 
   changeLimit(productAmount: number) {
-    console.log(productAmount);
     this.changeAmount.emit(productAmount);
    }
 
-  unlimitedProductAmount() {
+  onAmountChange() {
     this.changeAmount.emit(this.cartItem.amount);
   }
 }

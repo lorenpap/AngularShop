@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products$ = this.productService.getProducts();
+    this.products$ = this.productService.getProducts$();
   }
 
   isInCart(product: Product): boolean {
