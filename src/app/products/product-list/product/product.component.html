@@ -1,0 +1,26 @@
+<a class="image">
+  <img src="{{product.image}}" alt="WS">
+  <button id="out-of-stock" class="ui big negative basic button" *ngIf="product.limit===0">
+    out of stock
+  </button>
+</a>
+<div class="content">
+  <a class="header" routerLink="/products/{{product.name}}">{{product.name}}</a>
+  <div class="description">
+    {{product.description}}
+  </div>
+</div>
+<div class="extra content">
+  <div class="meta">
+    {{product.price| currency:'ILS':true }}
+  </div>
+  <div> Rating: 3/5
+  </div>
+  <div class="add-button ui primary button" [ngClass]="{'disabled': product.limit===0}"   (click)="addToCart(product)" *ngIf="!isInCart">
+    Add to cart
+  </div>
+
+  <div class="remove-button ui secondary button" (click)="removeFromCart(product)" *ngIf="isInCart && product.limit!==0">
+    Remove from cart
+  </div>
+</div>

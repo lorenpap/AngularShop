@@ -1,0 +1,20 @@
+.image {
+  background-color: #FFFFFF !important;
+  position: relative;
+}
+#out-of-stock {
+  position: absolute;
+  bottom: 45%;
+  left: 27%;
+  background-color: #FFFFFF;
+}
+.add-button {
+  margin-left: 53%;
+}
+.remove-button {
+  margin-left: 38%;
+}
+:host:hover > .image {
+  opacity: 0.6;
+}
+/*# sourceMappingURL=product.component.css.map */

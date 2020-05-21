@@ -1,0 +1,20 @@
+<div [matMenuTriggerFor]="menu">Account&Lists
+  <i id="dropdown-icon" class="dropdown icon"></i>
+</div>
+<mat-menu class="fluid" #menu="matMenu">
+  <div class="ui two column fluid relaxed divided padded grid">
+    <div class="column">
+      <div class="ui sub header">YOUR ACCOUNT</div>
+      <div class="ui link list">
+        <a class="item">SIGN IN</a>
+        <a class="item">SIGN UP</a>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui sub header">YOUR LISTS</div>
+      <div class="ui link list">
+        <a class="item">Create New List</a>
+      </div>
+    </div>
+  </div>
+</mat-menu>

@@ -1,0 +1,17 @@
+<mat-dialog-content>
+  <div class="ui header">Your Shopping Cart</div>
+  <div class="ui divider"></div>
+  <app-cart-product id="modal-content" class="ui grid" *ngFor=" let cartProduct of cartProducts$|async;"
+                    [cartItem]="cartProduct" (remove)="removeProduct(cartProduct.product.name)"
+                    (changeAmount)="updateAmount(cartProduct.product.name,$event)">
+  </app-cart-product>
+  <p id="total-price">Total price: {{totalPrice$ | async | currency: 'ILS'}}
+
+  <mat-dialog-actions align="end">
+    <div mat-dialog-close class="ui secondary button">continue shopping</div>
+    <button class="ui primary right labeled icon button" (click)="checkout()">
+      <i class="cart icon"></i>
+      checkout
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>

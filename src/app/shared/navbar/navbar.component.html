@@ -1,0 +1,20 @@
+<div id="navbar" class="ui grid">
+  <a routerLink="" id="logo" class="two wide column">
+    <img class="ui small image" alt="ama-romach-logo" src="../assets/images/white_logo.png">
+  </a>
+  <div id="search" class="seven wide column">
+    <div class="ui fluid action input">
+      <input type="text" placeholder="Search">
+      <button class="ui primary icon button">
+        <i class="search primary icon"></i>
+      </button>
+    </div>
+  </div>
+  <div id="tools-row" class="six wide column">
+    <div id="tools" class="ui fluid menu">
+      <app-account-menu id="account-button"></app-account-menu>
+      <app-cart-button id="cart-button" (click)="openDialog()">
+      </app-cart-button>
+    </div>
+  </div>
+</div>

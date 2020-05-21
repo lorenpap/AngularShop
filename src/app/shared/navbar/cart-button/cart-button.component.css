@@ -1,0 +1,35 @@
+.hover-color {
+  border-color: #FFFFFF;
+}
+#cart {
+  padding-right: 0;
+  margin-top: 1.5%;
+}
+#cart .cart-row {
+  padding: 0;
+}
+#cart #cart-product-counter {
+  margin-bottom: 8%;
+}
+#cart #cart-product-counter:before {
+  content: '(';
+}
+#cart #cart-product-counter:after {
+  content: ')';
+}
+#cart #cart-button {
+  background-color: #232f3e;
+  color: #FFFFFF;
+  border-color: #232f3e;
+}
+#modal #modal-content {
+  margin-top: 3%;
+  margin-left: 3%;
+}
+#modal .close-icon {
+  margin-left: 70%;
+}
+#modal #total-price {
+  margin: 5%;
+}
+/*# sourceMappingURL=cart-button.component.css.map */
