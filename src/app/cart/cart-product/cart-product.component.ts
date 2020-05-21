@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CartItem} from '../../models/cartItem.model';
 import {Product} from '../../models/product.model';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
   selector: 'app-cart-product',
@@ -26,9 +27,10 @@ export class CartProductComponent implements OnInit {
     this.productToRemove.emit(this.cartItem.product);
   }
 
-  changeLimit(limit: number) {
-    this.changeAmount.emit(limit);
-  }
+  changeLimit(productAmount: number) {
+    console.log(productAmount);
+    this.changeAmount.emit(productAmount);
+   }
 
   unlimitedProductAmount() {
     this.changeAmount.emit(this.cartItem.amount);
