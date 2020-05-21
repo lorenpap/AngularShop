@@ -13,18 +13,20 @@ import {CartItem} from '../models/cartItem.model';
 })
 export class CartComponent implements OnInit {
   cartProducts$: Observable<CartItem[]>;
+  totalPrice$: Observable<number>;
 
   constructor(public cartService: CartService, private productService: ProductService) {
   }
 
   ngOnInit() {
     this.createCart();
+    this.totalPrice$ = this.cartService.getCartTotalPrice$(this.cartProducts$);
   }
 
   createCart() {
     this.cartProducts$ = combineLatest(
       this.productService.getProducts$(),
-      this.cartService.getCart()).pipe(
+      this.cartService.getCart$()).pipe(
       map(([products, cart]: [Product[], Record<string, number>]) =>
         Object.keys(cart).map(name => ({product: products.find(elem => elem.name === name), amount: cart[name]}))));
   }
@@ -34,12 +36,12 @@ export class CartComponent implements OnInit {
     this.cartService.checkout();
   }
 
-  removeProduct(product: Product) {
-    this.cartService.remove(product.name);
+  removeProduct(productName: string) {
+    this.cartService.remove(productName);
   }
 
-  updateAmount(product: Product, amount: number) {
-    this.cartService.updateAmount(product.name, amount);
+  updateAmount(productName: string, amount: number) {
+    this.cartService.updateAmount(productName, amount);
   }
 
 

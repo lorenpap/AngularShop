@@ -1,8 +1,11 @@
 <div id="cards" class="ui four cards">
-  <ng-container *ngIf="products$ | async">
-    <app-product class="ui link card" *ngFor="let product of products$|async;"
-                 [product]="product" (deleteProduct)="removeFromCart($event)" (addProduct)="addToCart($event)"
-                 [isInCart]="isInCart(product)">
-    </app-product>
+  <ng-container *ngIf="productsInCart$ | async as productsInCart">
+    <ng-container *ngIf="products$ | async">
+      <app-product class="ui link card" *ngFor="let product of products$|async;"
+                   [product]="product" (deleteProduct)="removeFromCart(product.name)"
+                   (addProduct)="addToCart(product.name)"
+                   [isInCart]="!!productsInCart[product.name]">
+      </app-product>
+    </ng-container>
   </ng-container>
 </div>

@@ -3,6 +3,8 @@ import {Product} from 'src/app/models/product.model';
 import {ProductService} from 'src/app/products/services/product.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {CartService} from '../../cart/services/cart.service';
+import {Cart} from '../../models/cart.model';
+import {filter, first, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',
@@ -11,24 +13,22 @@ import {CartService} from '../../cart/services/cart.service';
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
-
+  productsInCart$: Observable<Cart>
+;
   constructor(private productService: ProductService, private cartService: CartService) {
   }
 
   ngOnInit() {
     this.products$ = this.productService.getProducts$();
+    this.productsInCart$ = this.cartService.getCart$();
   }
 
-  isInCart(product: Product): boolean {
-    return !!this.cartService.getProductAmount(product);
+  removeFromCart(productName: string) {
+    this.cartService.remove(productName);
   }
 
-  removeFromCart(currentProduct: Product) {
-    this.cartService.remove(currentProduct.name);
-  }
-
-  addToCart(currentProduct: Product) {
-    this.cartService.add(currentProduct.name);
+  addToCart(productName: string) {
+    this.cartService.add(productName);
   }
 }
 

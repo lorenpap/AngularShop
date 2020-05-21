@@ -13,7 +13,7 @@ export class CartButtonComponent {
   }
 
   getCartAmount() {
-    this.cartService.getCartAmount().subscribe(amount => this.cartAmount = amount);
+    this.cartService.getCartAmount$().subscribe(amount => this.cartAmount = amount);
   }
 
 }

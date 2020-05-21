@@ -37,11 +37,11 @@ export class CartService {
     this.cart$.next({});
   }
 
-  getCartAmount(): Observable<number> {
+  getCartAmount$(): Observable<number> {
     return this.cart$.pipe(map((cart) => Object.keys(cart).length));
   }
 
-  getCart(): Observable<Cart> {
+  getCart$(): Observable<Cart> {
     return this.cart$.asObservable();
   }
 
@@ -50,10 +50,5 @@ export class CartService {
       cartItems.reduce((acc, currentProduct) => acc + currentProduct.amount * currentProduct.product.price, 0)));
   }
 
-
-  getProductAmount(product: Product): number {
-    const cart = this.cart$.getValue();
-    return cart[product.name];
-  }
 
 }

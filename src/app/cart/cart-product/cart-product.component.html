@@ -10,7 +10,7 @@
     <p>{{cartItem.product.price| currency:'ILS' }}
     </p>
     <mat-select *ngIf="cartItem.product.limit; else unlimited"
-          [placeholder]="cartItem.amount.toString()" (selectionChange)="changeLimit($event.value)">
+                [placeholder]="cartItem.amount.toString()" (selectionChange)="onAmountChange($event.value)">
       <mat-option *ngFor="let limit of limitOptions;" [value]="limit">
         {{limit}}
       </mat-option>
@@ -18,7 +18,7 @@
 
     <ng-template #unlimited>
       <div class="ui transparent input">
-        <input type="number" min="1" [(ngModel)]="cartItem.amount" (change)="onAmountChange()">
+        <input type="number" min="1" [ngModel]="cartItem.amount" (ngModelChange)="onAmountChange($event)">
       </div>
     </ng-template>
   </div>

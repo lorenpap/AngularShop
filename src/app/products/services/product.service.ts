@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Product} from '../../models/product.model';
 import {CartService} from '../../cart/services/cart.service';
-import {map} from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 
 @Injectable()
 
@@ -29,10 +29,13 @@ export class ProductService {
 
   changeLimit() {
     const currentProducts = this.products$.getValue();
-    currentProducts.forEach((product) => {
-      if (product.limit !== undefined && this.cartService.getProductAmount(product) !== undefined) {
-        product.limit -= this.cartService.getProductAmount(product);
-      }
+    this.cartService.getCart$().pipe(first()).subscribe(cart => {
+      currentProducts.forEach((product) => {
+        if (product.limit !== undefined && cart[product.name] !== undefined) {
+          product.limit -= cart[product.name];
+        }
+      });
+      this.products$.next(currentProducts);
     });
   }
 }

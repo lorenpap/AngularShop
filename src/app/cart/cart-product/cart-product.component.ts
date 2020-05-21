@@ -11,12 +11,12 @@ import {MatSelectChange} from '@angular/material/select';
 export class CartProductComponent implements OnInit {
   @Input() cartItem: CartItem;
   @Output() changeAmount: EventEmitter<number>;
-  @Output() productToRemove: EventEmitter<Product>;
+  @Output() Remove: EventEmitter<Product>;
   limitOptions: number[];
 
   constructor() {
     this.changeAmount = new EventEmitter<number>();
-    this.productToRemove = new EventEmitter<Product>();
+    this.Remove = new EventEmitter<Product>();
   }
 
   ngOnInit() {
@@ -24,14 +24,11 @@ export class CartProductComponent implements OnInit {
   }
 
   removeProduct() {
-    this.productToRemove.emit(this.cartItem.product);
+    this.Remove.emit(this.cartItem.product);
   }
 
-  changeLimit(productAmount: number) {
-    this.changeAmount.emit(productAmount);
-   }
 
-  onAmountChange() {
-    this.changeAmount.emit(this.cartItem.amount);
+  onAmountChange(productAmount: number) {
+    this.changeAmount.emit(productAmount);
   }
 }
